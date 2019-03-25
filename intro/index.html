@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Web Components</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <script src="tooltip.js"></script>
+    <script src="confirmLink.js"></script>
+  </head>
+  <body>
+    <p>
+      <jared-tooltip text="custom tooltip one">
+        hover for tooltip one
+      </jared-tooltip>
+      words n stuff
+    </p>
+    <p>
+      <jared-tooltip>hover for default tooltip</jared-tooltip>
+      more words n stuff
+    </p>
+    <p>
+      <a is="jared-confirm-link" href="http://google.com">
+        Google It
+      </a>
+    </p>
+  </body>
+</html>
