@@ -1,13 +1,21 @@
 {
-  "name": "assignments",
+  "name": "webcomponents",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TruJared/compTut.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TruJared/compTut/issues"
+  },
+  "homepage": "https://github.com/TruJared/compTut#readme",
   "dependencies": {},
   "devDependencies": {
     "eslint": "^5.15.3",

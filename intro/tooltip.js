@@ -23,6 +23,8 @@ class Tooltip extends HTMLElement {
     `;
   }
 
+  //  !  use connectedCallback if traversing the light DOM from the shadow DOM  !  //
+
   connectedCallback() {
     if (this.hasAttribute('text')) {
       this._tooltipText = this.getAttribute('text');
