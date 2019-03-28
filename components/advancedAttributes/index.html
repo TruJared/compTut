@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Web Components</title>
+    <title>Web Components -- Rendering</title>
     <style>
       * {
         box-sizing: border-box;
@@ -16,25 +16,25 @@
 
       html {
         font-family: 'Times New Roman', Times, serif;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: 0.01em;
         line-height: 1.5em;
         color: rgb(67, 67, 67);
       }
 
-      div {
-        border: 1px solid orange;
-        border-radius: 5px;
-        padding: 5px;
-        margin-top: 10px;
-      }
-      .highlight {
-        background-color: #ffff00;
-      }
       uc-tooltip {
         border: 1px solid blue;
         border-radius: 5px;
-        padding: 5px;
+        padding: 7px 5px;
+      }
+
+      a {
+        text-decoration: none;
+        color: teal;
+      }
+
+      .spacer {
+        margin: 8px 0;
       }
     </style>
     <script src="tooltip.js"></script>
@@ -46,12 +46,13 @@
         class="from-host"
         text="Web Components is a set of standards."
       >
-        <span class="highlight">Web Components</span>
+        <span>Web Components</span>
         are awesome!
       </uc-tooltip>
     </p>
     <uc-tooltip></uc-tooltip>
-    <div>This does not get the web component styles!</div>
-    <a is="uc-confirm-link" href="https://www.google.com">Google</a>
+    <div class="spacer">
+      <a is="uc-confirm-link" href="https://www.google.com">Link To Google</a>
+    </div>
   </body>
 </html>

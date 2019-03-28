@@ -29,7 +29,7 @@ class Tooltip extends HTMLElement {
               font-weight: bold;
             }
             ::slotted(.highlight) {
-              border-bottom: 1px solid green;
+              border-bottom: 3px solid var(--color-primary, black);
             }
             .icon {
               background: darkgrey;
