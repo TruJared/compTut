@@ -5,9 +5,9 @@ class Tooltip extends HTMLElement {
   constructor() {
     super();
     // vars //
-    this._tooltipContainer;
     this._tooltipIcon;
     this._tooltipText = 'words n stuff';
+    this._tooltipVisible = false;
 
     this.attachShadow({ mode: 'open' });
 
@@ -30,6 +30,7 @@ class Tooltip extends HTMLElement {
 
             :host {
               background: #aac;
+              position: relative;
             }
 
             :host(.from-host) {
@@ -63,7 +64,7 @@ class Tooltip extends HTMLElement {
       'mouseleave',
       this._hideTooltip.bind(this),
     );
-    this.style.position = 'relative';
+    this._render();
   }
 
   // executes AFTER element is removed from DOM
@@ -96,14 +97,27 @@ class Tooltip extends HTMLElement {
   }
   // #endregion
 
+  //  *  render is NOT a reserved method name  *  //
+  //  *  can be called anything  *  //
+  _render() {
+    let tooltipContainer = this.shadowRoot.querySelector('div');
+    if (this._tooltipVisible) {
+      tooltipContainer = document.createElement('div');
+      tooltipContainer.textContent = this._tooltipText;
+      this.shadowRoot.appendChild(tooltipContainer);
+    } else if (tooltipContainer) {
+      this.shadowRoot.removeChild(tooltipContainer);
+    }
+  }
+
   _showTooltip() {
-    this._tooltipContainer = document.createElement('div');
-    this._tooltipContainer.textContent = this._tooltipText;
-    this.shadowRoot.appendChild(this._tooltipContainer);
+    this._tooltipVisible = true;
+    this._render();
   }
 
   _hideTooltip() {
-    this.shadowRoot.removeChild(this._tooltipContainer);
+    this._tooltipVisible = false;
+    this._render();
   }
 }
 
