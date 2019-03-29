@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Component -- Modal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <jt-modal>
+      <span slot="header-title" class="header-title"> Modal Title </span>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia cum
+        doloremque molestiae quas saepe optio harum maxime aliquid perferendis
+        reiciendis repellat, nemo vero odio earum magni, nihil, quam quo
+        dolorum.
+      </p>
+      <div slot="buttons">
+        <button>Like</button>
+        <button>Dislike</button>
+      </div>
+    </jt-modal>
+    <div class="center">
+      <p>Press To View Modal</p>
+      <button id="confirm-button">Modal 💯</button>
+    </div>
+    <script src="main.js"></script>
+    <script src="modal.js"></script>
+  </body>
+</html>
