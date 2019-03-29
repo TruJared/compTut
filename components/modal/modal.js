@@ -3,7 +3,9 @@ class Modal extends HTMLElement {
     super();
 
     this.attachShadow({ mode: 'open' });
+
     // #region
+    //  !  could not find how to use global button styles in shadow DOM ☹️  !  //
     this.shadowRoot.innerHTML = `
       <style>
         #backdrop {
@@ -23,7 +25,7 @@ class Modal extends HTMLElement {
           flex-direction: column;
           justify-content: space-between;
           position: fixed;
-          top: 15vh;
+          top: 0;
           left: 12.5vw;
           width: 75vw;
           height: 400px;
@@ -33,11 +35,19 @@ class Modal extends HTMLElement {
           text-align: center;
           opacity: 0;
           pointer-events: none;
+          transition: all 0.3s ease-in-out;
+        }
+        :host(.jt-modal-dark) #modal{
+          background: #292929;
+          color: white;
         }
         :host([opened]) #backdrop,
         :host([opened]) #modal {
           opacity: 1;
           pointer-events: all;
+        }
+        :host([opened]) #modal {
+          top: 10vh;
         }
 
         header {
@@ -58,6 +68,27 @@ class Modal extends HTMLElement {
           width: 85%;
           margin: auto;
         }
+        button {
+          padding: 1.25rem 1.75rem;
+          text-transform: uppercase;
+          background: var(--button-base);
+          color: white;
+          border: none;
+          box-shadow: none;
+          font-size: 1.8rem;
+          letter-spacing: 1px;
+          border-radius: 5px;
+          width: 125px;
+          transition: background 0.5s ease-in-out;
+          margin: 10px;
+      }
+      button:hover {
+        background: var(--button-hover);
+      }
+      button:active {
+        background: var(--button-hover);
+        transform: scale(0.98);
+      }
       </style>
       <div id="backdrop"></div>
       <div id="modal">
@@ -70,15 +101,48 @@ class Modal extends HTMLElement {
             <slot></slot>
           </section>
           <section id="actions">
-            <slot name="buttons">
-              <button>This Modal Is Hot</button>
-              <button>This Modal Is Not</button
-            </slot>
+              <button id="confirm-btn">Confirm</button>
+              <button id="cancel-btn">Cancel</button>
           </section>
       </div>
     `;
+    // #endregion
+
+    // confirm and cancel actions
+    this.shadowRoot.querySelector('#backdrop').addEventListener('click', this._cancel.bind(this));
+
+    this.shadowRoot
+      .querySelector('#confirm-btn')
+      .addEventListener('click', this._confirm.bind(this));
+    this.shadowRoot.querySelector('#cancel-btn').addEventListener('click', this._cancel.bind(this));
+
+    //  *  FYI --- slots can be queried  *  //
+    const slots = this.shadowRoot.querySelectorAll('slot');
+    console.log(slots);
   }
-  // #endregion
+
+  //  private methods  //
+  //  !  these methods emit custom events  !  //
+  _cancel() {
+    this.hide();
+    const cancelEvent = new Event('cancel');
+    this.dispatchEvent(cancelEvent);
+  }
+
+  _confirm() {
+    this.hide();
+    const confirmEvent = new Event('confirm');
+    this.dispatchEvent(confirmEvent);
+  }
+
+  //  public methods  //
+  open() {
+    this.setAttribute('opened', '');
+  }
+
+  hide() {
+    this.removeAttribute('opened');
+  }
 }
 
 customElements.define('jt-modal', Modal);

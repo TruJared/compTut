@@ -4,8 +4,8 @@
 
 :root {
   font-size: 10px;
-  --button-base: rgb(123, 180, 236);
-  --button-hover: rgb(235, 88, 88);
+  --button-hover: #7bb4ec;
+  --button-base: #e7a4e7;
   --font-color: #363535;
 }
 
@@ -21,7 +21,7 @@ body {
 }
 
 .header-title {
-  color: var(--button-base);
+  color: var(--button-hover);
 }
 
 .center {
