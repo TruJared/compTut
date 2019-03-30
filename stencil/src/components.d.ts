@@ -40,15 +40,27 @@ export namespace Components {
     */
     'middle'?: string;
   }
+
+  interface JtSideDrawer {
+    'open': boolean;
+    'openIt': () => void;
+    'title': string;
+  }
+  interface JtSideDrawerAttributes extends StencilHTMLAttributes {
+    'open'?: boolean;
+    'title'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
     'MyComponent': Components.MyComponent;
+    'JtSideDrawer': Components.JtSideDrawer;
   }
 
   interface StencilIntrinsicElements {
     'my-component': Components.MyComponentAttributes;
+    'jt-side-drawer': Components.JtSideDrawerAttributes;
   }
 
 
@@ -58,12 +70,20 @@ declare global {
     new (): HTMLMyComponentElement;
   };
 
+  interface HTMLJtSideDrawerElement extends Components.JtSideDrawer, HTMLStencilElement {}
+  var HTMLJtSideDrawerElement: {
+    prototype: HTMLJtSideDrawerElement;
+    new (): HTMLJtSideDrawerElement;
+  };
+
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement
+    'jt-side-drawer': HTMLJtSideDrawerElement
   }
 
   interface ElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'jt-side-drawer': HTMLJtSideDrawerElement;
   }
 
 
