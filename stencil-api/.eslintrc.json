@@ -21,8 +21,10 @@
     "@typescript-eslint/explicit-member-accessibility": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/indent": 0,
+    "arrow-parens": 0,
     "class-methods-use-this": 0,
     "consistent-return": 1,
+    "implicit-arrow-linebreak": 1,
     "import/prefer-default-export": 0,
     "lines-between-class-members": [
       2,
@@ -33,6 +35,7 @@
     ],
     "no-console": 1,
     "no-return-assign": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "operator-linebreak": 0
   }
 }

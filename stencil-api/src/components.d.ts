@@ -12,19 +12,36 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface JtStockPrices {}
-  interface JtStockPricesAttributes extends StencilHTMLAttributes {}
+  interface JtStockFinder {}
+  interface JtStockFinderAttributes extends StencilHTMLAttributes {
+    'onJtSymbolSelected'?: (event: CustomEvent<string>) => void;
+  }
+
+  interface JtStockPrices {
+    'stockSymbol': string;
+  }
+  interface JtStockPricesAttributes extends StencilHTMLAttributes {
+    'stockSymbol'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
+    'JtStockFinder': Components.JtStockFinder;
     'JtStockPrices': Components.JtStockPrices;
   }
 
   interface StencilIntrinsicElements {
+    'jt-stock-finder': Components.JtStockFinderAttributes;
     'jt-stock-prices': Components.JtStockPricesAttributes;
   }
 
+
+  interface HTMLJtStockFinderElement extends Components.JtStockFinder, HTMLStencilElement {}
+  var HTMLJtStockFinderElement: {
+    prototype: HTMLJtStockFinderElement;
+    new (): HTMLJtStockFinderElement;
+  };
 
   interface HTMLJtStockPricesElement extends Components.JtStockPrices, HTMLStencilElement {}
   var HTMLJtStockPricesElement: {
@@ -33,10 +50,12 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'jt-stock-finder': HTMLJtStockFinderElement
     'jt-stock-prices': HTMLJtStockPricesElement
   }
 
   interface ElementTagNameMap {
+    'jt-stock-finder': HTMLJtStockFinderElement;
     'jt-stock-prices': HTMLJtStockPricesElement;
   }
 

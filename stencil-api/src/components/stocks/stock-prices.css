@@ -1,0 +1,235 @@
+* {
+  box-sizing: border-box;
+}
+
+#price {
+  color: #161616;
+  font-size: 5vh;
+}
+
+#get-price {
+  position: relative;
+  width: 100%;
+}
+input,
+#stock-symbol {
+  font-size: 4vh;
+  max-width: 300px;
+  padding: 15px;
+  border: none;
+  background: rgba(0, 0, 0, 0.02);
+  margin-bottom: 5vh;
+  transition: 0.5s ease background;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid lightgrey;
+}
+
+#stock-symbol:active,
+#stock-symbol:focus {
+  outline: none;
+  background: lightsalmon;
+}
+
+button,
+#stock-submit-btn {
+  font-size: 4.5vh;
+  border: none;
+  border-radius: 35px;
+  padding: 10px;
+  background-color: #cc9813;
+  background: linear-gradient(to top left, #cc9813, white);
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+button:active,
+#stock-submit-btn:active {
+  outline: none;
+  transform: scale(0.95);
+}
+
+button,
+#stock-submit-btn:focus {
+  outline: none;
+}
+
+#stock-submit-btn:disabled {
+  opacity: 0.3;
+}
+
+/* https://jsfiddle.net/273ntk5s/2/ */
+
+#stock-symbol:focus ~ .floating-label,
+#stock-symbol:not(:focus):valid ~ .floating-label {
+  top: 0;
+  left: 0px;
+  font-size: 0;
+  opacity: 0;
+}
+
+/* #stock-symbol text {
+  font-size: 14px;
+  width: 200px;
+  height: 35px;
+} */
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 30px;
+  transition: 0.5s ease all;
+  color: rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  font-size: 30px;
+}
+
+/* list */
+.floating-list {
+  font-size: 20px;
+  text-align: left;
+  max-width: 400px;
+  padding: 0 15px;
+}
+
+ul {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  margin-top: 50px;
+}
+
+li {
+  text-align: center;
+  flex: 1;
+  list-style: none;
+  color: black;
+  padding: 5px;
+  background: rgba(89, 137, 168, 0.555);
+  margin: 5px;
+  text-transform: uppercase;
+  transition: 0.5s ease all;
+}
+
+li:hover {
+  color: white;
+  cursor: pointer;
+}
+
+/* search box */
+
+.search {
+  height: 20%;
+  position: relative;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.search p {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+#search-form {
+  height: 100%;
+}
+
+#find-symbol {
+  font-size: 20px;
+}
+
+#search-form-btn {
+  font-size: 20px;
+  border-radius: 5px;
+  margin-left: 12px;
+  opacity: 0.95;
+}
+/* media querys */
+@media only screen and (max-width: 600px) {
+  #price {
+    font-size: 4vh;
+  }
+  input {
+    font-size: 3.5vh;
+    width: 75%;
+  }
+  #stock-submit-btn {
+    font-size: 3.5vh;
+  }
+  .floating-label {
+    font-size: 20px;
+    left: 50px;
+    top: 40px;
+  }
+  #stock-symbol:focus ~ .floating-label,
+  #stock-symbol:not(:focus):valid ~ .floating-label {
+    left: 0px;
+  }
+}
+
+/* misc */
+
+:host(.error):before {
+  content: 'invalid stock symbol';
+  color: rgb(236, 15, 163);
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}

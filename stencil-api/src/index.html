@@ -12,9 +12,6 @@
       rel="stylesheet"
     />
     <style>
-      * {
-        box-sizing: border-box;
-      }
       body {
         margin: 0;
         height: 100vh;
@@ -23,7 +20,11 @@
         align-items: center;
         font-family: 'Crimson Text', serif;
         font-size: 30px;
-        background: linear-gradient(to bottom right, transparent, darkgrey);
+        background-color: darkgrey;
+        background: linear-gradient(to bottom right, transparent, darkgrey),
+          url('https://res.cloudinary.com/jared-truscott/image/upload/c_scale,e_art:sizzle,w_1200/v1554018805/1227081149388875334.jpg')
+            no-repeat center;
+        background-size: cover;
       }
       .container {
         display: flex;
@@ -31,18 +32,19 @@
         justify-content: flex-start;
         align-items: center;
         text-align: center;
-        height: 75vh;
-        width: 75vw;
+        height: 77vh;
+        width: 77vw;
         max-width: 900px;
         border: 1px solid #505050;
         border-radius: 5px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
         background: #f5f5f5;
         line-height: 1.15;
+        overflow: hidden;
       }
       h1 {
         color: #222222;
-        font-size: 8vh;
+        font-size: 6vh;
         margin: 10px;
         position: relative;
       }
@@ -54,13 +56,31 @@
         width: 100%;
         border-bottom: 5px solid #c0c0c0;
       }
+      @media only screen and (max-width: 600px) {
+        h1 {
+          font-size: 5vh;
+        }
+        .container {
+          height: 90vh;
+          width: 90vw;
+        }
+      }
     </style>
     <script src="/build/mycomponent.js"></script>
   </head>
   <body>
     <div class="container">
       <h1>Current Stock Prices</h1>
-      <jt-stock-prices> </jt-stock-prices>
+      <jt-stock-prices stock-symbol="rht"> </jt-stock-prices>
+      <jt-stock-finder></jt-stock-finder>
     </div>
+
+    <!-- test if symbol being passed -->
+    <!-- <script>
+      const stockFinderEl = document.querySelector('jt-stock-finder');
+      stockFinderEl.addEventListener('jtSymbolSelected', event =>
+        console.log(event),
+      );
+    </script> -->
   </body>
 </html>
